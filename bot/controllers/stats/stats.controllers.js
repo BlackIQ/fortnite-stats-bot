@@ -15,7 +15,7 @@ export const STATS = async (ctx) => {
     const { data: response } = await API.get("stats/br/v2", {
       params: {
         name: username,
-        image: "all",
+        // image: "all",
       },
     });
 
@@ -31,29 +31,27 @@ export const STATS = async (ctx) => {
     const remainingMinutes = minutesPlayed % 60;
 
     const messages = [
-      `Account ID: ${account.id}`,
-      `Account name: ${account.name}`,
+      // `🆔 ID: ${account.id}`,
+      `👤 Name: ${account.name}`,
       "",
-      `Level: ${battlePass.level}`,
-      `Progress: ${battlePass.progress}`,
+      `⭐️ Battle pass: ${battlePass.level}`,
+      `📈 Score: ${all.overall.score}`,
+      `👊 Total mathes: ${all.overall.matches}`,
+      `🏆 Wins: ${all.overall.wins}`,
+      `🔟 Top 10: ${all.overall.top10}`,
+      `🔪 Kills: ${all.overall.kills}`,
+      `☠️ Deaths: ${all.overall.deaths}`,
+      `🧑‍🚀 K/D: ${all.overall.kd}`,
+      `⏳ Time played: ${hoursPlayed} hours and ${remainingMinutes} minutes`,
       "",
-      `Score: ${all.overall.score}`,
-      `Total mathes: ${all.overall.matches}`,
-      `Wins: ${all.overall.wins}`,
-      `Top 3: ${all.overall.top3}`,
-      `Top 10: ${all.overall.top10}`,
-      `Top 25: ${all.overall.top25}`,
-      `Wins: ${all.overall.wins}`,
-      `Kills: ${all.overall.kills}`,
-      `Deaths: ${all.overall.deaths}`,
-      `K/D: ${all.overall.kd}`,
-      `K/M: ${all.overall.killsPerMatch}`,
-      `Time played: ${hoursPlayed} hours and ${remainingMinutes} minutes`,
+      "Subscribe to @telegram",
     ];
 
-    await ctx.replyWithPhoto(image, {
-      caption: messages.join("\n"),
-    });
+    await ctx.reply(messages.join("\n"));
+
+    // await ctx.replyWithPhoto(image, {
+    //   caption: messages.join("\n"),
+    // });
   } catch (error) {
     await ctx.reply(error.message);
   }
