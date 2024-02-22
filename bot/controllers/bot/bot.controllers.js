@@ -19,8 +19,7 @@ export const HELP = async (ctx) => {
     "/stats <username> To get stats",
     "",
     "For more information read about or contact with @GNU_Jupiter",
-    "",
-    "Hi, I am Amirhossein. If you liked this bot, let's play with each other!",
+    "If you liked this bot, let's play with each other!",
   ];
 
   await ctx.reply(messages.join("\n"));
