@@ -1,3 +1,3 @@
-import admin from "$bot/middlewares/admin/admin.middleware.js";
+import gateway from "$bot/middlewares/gateway/gateway.middleware.js";
 
-export { admin };
+export { gateway };
