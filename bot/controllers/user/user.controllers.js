@@ -14,16 +14,14 @@ export const SET = async (ctx) => {
 
     const username = splited[1];
 
-    const { data: response } = await API.patch(`users/${_id}`, {
+    await API.patch(`users/${_id}`, {
       fortnite_id: username,
     });
 
-    console.log(response);
-
     const messages = [`Username updated to ${username}`];
 
-    await ctx.reply(messages.join("\n"));
+    return await ctx.reply(messages.join("\n"));
   } catch (error) {
-    await ctx.reply(error.message);
+    return await ctx.reply(error.message);
   }
 };
