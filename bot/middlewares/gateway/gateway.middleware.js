@@ -1,7 +1,9 @@
 import { API } from "$bot/api/index.js";
 
 const gateway = async (ctx, next) => {
-  const { from: user } = ctx.update.message;
+  const { update } = ctx;
+
+  const user = update?.callback_query?.from || update?.message?.from;
 
   try {
     const { data } = await API.post("gateway", user);
@@ -12,11 +14,9 @@ const gateway = async (ctx, next) => {
 
     ctx.fortnite.user = data.user;
 
-    next();
+    return next();
   } catch (error) {
-    await ctx.reply(error.response.data.message);
-
-    next();
+    return await ctx.reply(error.message);
   }
 };
 
