@@ -5,22 +5,28 @@ export const START = async (ctx) => {
     "For more information send /help.",
     "",
     "This project is open-source 🐙",
-    "- [GitHub](https://github.com/BlackIQ/fortnite-stats-bot)",
+    "- [GitHub](https://github.com/BlackIQ/fortnite-stats-bot)"
   ];
 
-  await ctx.replyWithMarkdown(messages.join("\n"));
+  return await ctx.replyWithMarkdown(messages.join("\n"));
 };
 
 export const HELP = async (ctx) => {
   const messages = [
-    "Fortnite Stats",
+    "Fortnite Stats Manual",
     "",
-    "/help To see manual",
-    "/stats <username> To get stats",
+    "/start - Really?",
+    "/help - To see manual",
+    "",
+    "/stats <username> - Get stats of the user",
+    "/favorites - Show your favorite players",
+    "",
+    "/my - Here you can get your stats after saving",
+    "/set <username> - Save your username",
     "",
     "For more information read about or contact with @GNU_Jupiter",
     "If you liked this bot, let's play with each other!",
   ];
 
-  await ctx.reply(messages.join("\n"));
+  return await ctx.reply(messages.join("\n"));
 };
