@@ -22,7 +22,7 @@ bot.help(Bot.HELP); // Get help
 
 // Stats
 bot.command("stats", Stats.STATS); // Get stat via command
-bot.action(/^stats_(.+)/, Stats.STATS); // Get stat via action
+bot.action(/^stats?(.+)/, Stats.STATS); // Get stat via action
 
 // User
 bot.command("set", User.SET); // Set username
@@ -30,7 +30,7 @@ bot.command("my", Stats.MY); // Get user stat
 
 // Favorites
 bot.command("favorites", Favorite.LIST); // List of them
-bot.action(/^add_(.+)/, Favorite.ADD); // Add one
-bot.action(/^remove_(.+)/, Favorite.REMOVE); // Remove one
+bot.action(/^add?(.+)/, Favorite.ADD); // Add one
+bot.action(/^remove?(.+)/, Favorite.REMOVE); // Remove one
 
 export default bot;
