@@ -25,12 +25,10 @@ export const getStat = async (username, user) => {
   const btnCall = favorite ? "remove" : "add";
   const btnExt = favorite ? favorite._id : username;
 
-  console.log({ btnText, btnCall, btnExt });
-
   buttons.push([
     {
       text: btnText,
-      callback_data: `${btnCall}_${btnExt}`,
+      callback_data: `${btnCall}?${btnExt}`,
     },
   ]);
 
