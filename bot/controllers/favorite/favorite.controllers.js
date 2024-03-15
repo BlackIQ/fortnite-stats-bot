@@ -18,7 +18,7 @@ export const LIST = async (ctx) => {
 
       buttons[buttons.length - 1].push({
         text: favorite.fortnite_id,
-        callback_data: `stats_${favorite._id}`,
+        callback_data: `stats?${favorite.fortnite_id}`,
       });
     });
 
@@ -40,7 +40,7 @@ export const ADD = async (ctx) => {
   const { _id: user } = ctx.fortnite.user;
 
   try {
-    const id = ctx.callbackQuery.data.split("_")[1];
+    const id = ctx.callbackQuery.data.split("?")[1];
 
     await API.post(`favorites`, { user, fortnite_id: id });
 
@@ -52,11 +52,13 @@ export const ADD = async (ctx) => {
 
 export const REMOVE = async (ctx) => {
   try {
-    const id = ctx.callbackQuery.data.split("_")[1];
+    const id = ctx.callbackQuery.data.split("?")[1];
 
     const { data: response } = await API.delete(`favorites/${id}`);
 
-    return await ctx.reply(`${response.favorite.fortnite_id} removed from favorites.`);
+    return await ctx.reply(
+      `${response.favorite.fortnite_id} removed from favorites.`
+    );
   } catch (error) {
     return await ctx.reply(error.message);
   }
