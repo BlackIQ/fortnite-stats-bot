@@ -4,9 +4,18 @@ export const STATS = async (ctx) => {
   const { _id: user } = ctx.fortnite.user;
 
   try {
-    const input = ctx.message.text;
+    let input = "";
+    let spliter = "";
 
-    const splited = input.split(" ");
+    if (ctx?.message?.text) {
+      input = ctx?.message?.text;
+      spliter = " ";
+    } else {
+      input = ctx?.callbackQuery?.data;
+      spliter = "?";
+    }
+
+    const splited = input.split(spliter);
 
     if (splited.length !== 2) {
       return await ctx.reply("Invalid. Ex: /stats GNU_Amir");
