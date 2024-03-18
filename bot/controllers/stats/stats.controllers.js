@@ -51,7 +51,7 @@ export const MY = async (ctx) => {
   }
 
   try {
-    const messages = await getStat(fortnite_id);
+    const { messages } = await getStat(fortnite_id);
 
     return await ctx.reply(messages.join("\n"));
 
