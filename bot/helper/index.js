@@ -41,7 +41,7 @@ export const getStat = async (username, user) => {
     `👊 Total mathes: ${all.overall.matches}`,
     `🏆 Wins: ${all.overall.wins}`,
     `🥈 Top 10: ${all.overall.top10}`,
-    `🥉 Top 10: ${all.overall.top25}`,
+    `🥉 Top 25: ${all.overall.top25}`,
     `🔪 Kills: ${all.overall.kills}`,
     `☠️ Deaths: ${all.overall.deaths}`,
     `🧑‍🚀 K/D: ${all.overall.kd}`,
