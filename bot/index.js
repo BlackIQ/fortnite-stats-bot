@@ -1,6 +1,6 @@
 import { Socks5 } from "$bot/connections/index.js";
 import { botConfig, appConfig } from "$bot/config/index.js";
-import { Bot, Stats, User, Favorite } from "$bot/controllers/index.js";
+import { Bot, Stats, User, Favorite, Report } from "$bot/controllers/index.js";
 
 import { gateway } from "$bot/middlewares/index.js";
 
@@ -32,5 +32,8 @@ bot.command("my", Stats.MY); // Get user stat
 bot.command("favorites", Favorite.LIST); // List of them
 bot.action(/^add?(.+)/, Favorite.ADD); // Add one
 bot.action(/^remove?(.+)/, Favorite.REMOVE); // Remove one
+
+// Log
+bot.command("log", Report.BASIC); // basic log
 
 export default bot;
