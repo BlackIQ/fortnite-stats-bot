@@ -8,8 +8,6 @@ export const BASIC = async (ctx) => {
       params: { user },
     });
 
-    console.log(response);
-
     const baseData = [
       "Basic log",
       "",
