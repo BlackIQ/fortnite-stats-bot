@@ -17,13 +17,14 @@ export const STATS = async (ctx) => {
 
     const splited = input.split(spliter);
 
-    if (splited.length !== 2) {
-      return await ctx.reply("Invalid. Ex: /stats GNU_Amir");
+    if (splited.length !== 3) {
+      return await ctx.reply("Invalid. Ex: /stats GNU_Amir overall");
     }
 
     const username = splited[1];
+    const type = splited[2];
 
-    const { messages, buttons } = await getStat(username, user);
+    const { messages, buttons } = await getStat(username, user, type);
 
     const buttonsMarkup = {
       reply_markup: {
@@ -37,7 +38,7 @@ export const STATS = async (ctx) => {
     //   caption: messages.join("\n"),
     // });
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };
 
@@ -50,8 +51,27 @@ export const MY = async (ctx) => {
     );
   }
 
+  let input = "";
+  let spliter = "";
+
+  if (ctx?.message?.text) {
+    input = ctx?.message?.text;
+    spliter = " ";
+  } else {
+    input = ctx?.callbackQuery?.data;
+    spliter = "?";
+  }
+
+  const splited = input.split(spliter);
+
+  if (splited.length !== 2) {
+    return await ctx.reply("Invalid. Ex: /my overall");
+  }
+
+  const type = splited[1];
+
   try {
-    const { messages } = await getStat(fortnite_id, _id);
+    const { messages } = await getStat(fortnite_id, _id, type);
 
     return await ctx.reply(messages.join("\n"));
 
@@ -59,6 +79,6 @@ export const MY = async (ctx) => {
     //   caption: messages.join("\n"),
     // });
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };

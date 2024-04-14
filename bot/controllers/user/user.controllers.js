@@ -22,6 +22,6 @@ export const SET = async (ctx) => {
 
     return await ctx.reply(messages.join("\n"));
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };

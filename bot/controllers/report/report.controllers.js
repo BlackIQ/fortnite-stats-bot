@@ -39,6 +39,6 @@ export const BASIC = async (ctx) => {
 
     return await ctx.reply(message);
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };

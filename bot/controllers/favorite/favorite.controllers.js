@@ -32,7 +32,7 @@ export const LIST = async (ctx) => {
 
     return await ctx.reply(message, buttonsMarkup);
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };
 
@@ -46,7 +46,7 @@ export const ADD = async (ctx) => {
 
     return await ctx.reply(`${id} added to favorites.`);
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };
 
@@ -60,6 +60,6 @@ export const REMOVE = async (ctx) => {
       `${response.favorite.fortnite_id} removed from favorites.`
     );
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };
