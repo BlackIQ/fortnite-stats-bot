@@ -16,7 +16,7 @@ const gateway = async (ctx, next) => {
 
     return next();
   } catch (error) {
-    return await ctx.reply(error.message);
+    return await ctx.reply(error.response.data.message);
   }
 };
 
